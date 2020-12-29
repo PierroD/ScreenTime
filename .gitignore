@@ -1,0 +1,25 @@
+#ignore the solution (.sln)
+*.sln
+
+#ignore the Visual studio temp something (.vs folder)
+.vs/
+
+#ignore the logfiles & txtfiles
+*.log
+*.txt
+
+#ignore the portable version (.pdb)
+*.pdb
+
+#ignore packages
+packages
+
+#ignore ini files (.ini)
+#*.ini
+
+#ignore Release & Debug
+ScreenTime/bin/Release/
+ScreenTime/bin/Debug/
+
+ScreenTime/obj/Release/
+ScreenTime/obj/Debug/
