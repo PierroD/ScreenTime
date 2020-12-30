@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SwapUserControl;
 using ScreenTime.Views.Settings;
+using ScreenTimeBackend.Controller;
 
 namespace ScreenTime
 {
@@ -17,6 +18,7 @@ namespace ScreenTime
         public form_ScreenTime()
         {
             InitializeComponent();
+            CategoryController.LoadCategories();
         }
 
         private void pbox_Home_Click(object sender, EventArgs e)

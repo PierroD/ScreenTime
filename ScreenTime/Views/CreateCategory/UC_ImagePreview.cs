@@ -12,7 +12,8 @@ namespace ScreenTime.Views.CreateCategory
 {
     public partial class UC_ImagePreview : UserControl
     {
-        private string filepath;
+        public string filepath { get; set; }
+
         public UC_ImagePreview()
         {
             InitializeComponent();
@@ -21,13 +22,13 @@ namespace ScreenTime.Views.CreateCategory
 
         void LoadImagePreview()
         {
-            this.filepath = SelectImage.SelectImage.GetFilePath();
-            pbox_previewImage.Image = Image.FromFile(this.filepath);
+            filepath = SelectImage.SelectImage.GetFilePath();
+            pbox_previewImage.Image = Image.FromFile(filepath);
         }
 
         private void btn_menu_Click(object sender, EventArgs e)
         {
-            menu_preview.Show(btn_menu, new Point (0 - (menu_preview.Width - btn_menu.Width) / 2,btn_menu.Height));
+            menu_preview.Show(btn_menu, new Point(0 - (menu_preview.Width - btn_menu.Width) / 2, btn_menu.Height));
         }
 
         private void deleteImageToolStripMenuItem_Click(object sender, EventArgs e)

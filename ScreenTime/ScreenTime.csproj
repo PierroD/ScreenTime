@@ -118,5 +118,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ScreenTimeBackend\ScreenTimeBackend.csproj">
+      <Project>{b5d5efe0-1bd8-48ee-b6e6-c55735048486}</Project>
+      <Name>ScreenTimeBackend</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
