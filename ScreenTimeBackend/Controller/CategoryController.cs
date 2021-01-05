@@ -62,6 +62,11 @@ namespace ScreenTimeBackend.Controller
                     categories.Remove(category);
         }
 
+        public static List<Category> GetCategories()
+        {
+            return categories;
+        }
+
         public static Category GetCategory(string Name)
         {
             foreach (Category category in categories)

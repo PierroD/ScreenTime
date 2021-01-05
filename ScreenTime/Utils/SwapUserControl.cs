@@ -21,6 +21,30 @@ namespace SwapUserControl
             else
                 uc.BringToFront();
         }
+
+        public static void SwapCategories(Panel pnl, UserControl uc, string categoryName)
+        {
+            if (UserControlExist(uc, categoryName) == null)
+            {
+                pnl.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+                uc.BringToFront();
+            }
+            else
+                UserControlExist(uc, categoryName).BringToFront();
+
+        }
+
+        private static Dictionary<string, UserControl> allUsercontrols = new Dictionary<string, UserControl>();
+        private static UserControl UserControlExist(UserControl uc, string categoryName)
+        {
+            if (allUsercontrols.ContainsKey(categoryName))
+                return allUsercontrols[categoryName];
+
+            allUsercontrols.Add(categoryName, uc);
+            return null;
+        }
+
     }
 }
 

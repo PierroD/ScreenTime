@@ -18,15 +18,16 @@ namespace ScreenTimeBackend.Controller
             if (category.Applications == null)
                 category.Applications = new List<Processus>();
             category.Applications.Add(newProcessus);
-
+            CategoryController.SaveCategories();
         }
 
         public static void DeleteProcessus(string CategoryName, string ProcessName)
         {
             var category = CategoryController.GetCategory(CategoryName);
-            foreach (Processus processus in category.Applications)
+            foreach (Processus processus in category.Applications.ToList())
                 if (processus.Name.Equals(ProcessName))
                     category.Applications.Remove(processus);
+            CategoryController.SaveCategories();
         }
 
     }

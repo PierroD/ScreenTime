@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ScreenTime.Utils
+{
+    public class ProcessHelper
+    {
+        [DllImport("psapi.dll")]
+        static extern uint GetModuleFileNameEx(IntPtr hProcess, IntPtr hModule, [Out] StringBuilder lpBaseName, [In][MarshalAs(UnmanagedType.U4)] int nSize);
+        public static string GetPathFromProcessId(Process process)
+        {
+            var sb = new StringBuilder(1024);
+            if (GetModuleFileNameEx(process.Handle, IntPtr.Zero, sb, sb.Capacity) > 0)
+            {
+                return sb.ToString();
+            }
+            return string.Empty;
+        }
+    }
+}

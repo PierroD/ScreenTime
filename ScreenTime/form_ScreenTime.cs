@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SwapUserControl;
 using ScreenTime.Views.Settings;
 using ScreenTimeBackend.Controller;
+using ScreenTime.Views.CategoryModel;
 
 namespace ScreenTime
 {
@@ -18,7 +19,7 @@ namespace ScreenTime
         public form_ScreenTime()
         {
             InitializeComponent();
-            CategoryController.LoadCategories();
+            LoadCategories();
         }
 
         private void pbox_Home_Click(object sender, EventArgs e)
@@ -39,27 +40,17 @@ namespace ScreenTime
 
         private void btn_CreateCategory_Click(object sender, EventArgs e)
         {
-            Form formCreate = new form_createCategory();
-            Form formBackground = new Form();
-            formBackground.StartPosition = FormStartPosition.Manual;
-            formBackground.FormBorderStyle = FormBorderStyle.None;
-            formBackground.Opacity = 0.70d;
-            formBackground.BackColor = Color.Black;
-            formBackground.WindowState = FormWindowState.Normal;
-            formBackground.Size = this.Size;
-            //formBackground.TopMost = true;
-            formBackground.Location = this.Location;
-            formBackground.ShowInTaskbar = false;
-            formBackground.Show();
+            openAppWindow.openAppWindow.OpenWindow(this, new form_createCategory());
+            LoadCategories();
+        }
 
-            formCreate.Owner = formBackground;
-            formCreate.StartPosition = FormStartPosition.Manual;
-            formCreate.TopMost = true;
-            formCreate.Location = new Point(this.Location.X + (this.Width - formCreate.Width) / 2, this.Location.Y + (this.Height - formCreate.Height) / 2);
+        private void LoadCategories()
+        {
+            CategoryController.LoadCategories();
+            pnl_categories.Controls.Clear();
+            foreach (var category in CategoryController.GetCategories())
+                pnl_categories.Controls.Add(new UC_CategoryModel(category.Name));
 
-            formCreate.ShowDialog();
-
-            formBackground.Dispose();
         }
     }
 }

@@ -36,6 +36,9 @@
     <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
+    <Reference Include="Guna.UI">
+      <HintPath>C:\Users\Light\Downloads\Guna.UI-Framework-Lib-master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2">
       <HintPath>C:\Users\Light\Downloads\Guna.UI2_WinForms_v2.0.1.2\lib\net40\Guna.UI2.dll</HintPath>
     </Reference>
@@ -44,6 +47,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,13 +73,39 @@
     <Compile Include="form_createCategory.Designer.cs">
       <DependentUpon>form_createCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\openAppWindow.cs" />
+    <Compile Include="Utils\ProcessHelper.cs" />
     <Compile Include="Utils\SelectImage.cs" />
     <Compile Include="Utils\SwapUserControl.cs" />
+    <Compile Include="Views\CategoryModel\UC_CategoryModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CategoryModel\UC_CategoryModel.Designer.cs">
+      <DependentUpon>UC_CategoryModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryTable\UC_CategoryTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CategoryTable\UC_CategoryTable.Designer.cs">
+      <DependentUpon>UC_CategoryTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateCategory\UC_ImagePreview.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\CreateCategory\UC_ImagePreview.Designer.cs">
       <DependentUpon>UC_ImagePreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProcessusModel\UC_ProcessusModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ProcessusModel\UC_ProcessusModel.Designer.cs">
+      <DependentUpon>UC_ProcessusModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProcessusSearch\UC_ProcessusSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ProcessusSearch\UC_ProcessusSearch.Designer.cs">
+      <DependentUpon>UC_ProcessusSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Settings\UC_Settings.cs">
       <SubType>UserControl</SubType>
@@ -98,8 +128,20 @@
     <EmbeddedResource Include="form_createCategory.resx">
       <DependentUpon>form_createCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CategoryModel\UC_CategoryModel.resx">
+      <DependentUpon>UC_CategoryModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CategoryTable\UC_CategoryTable.resx">
+      <DependentUpon>UC_CategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CreateCategory\UC_ImagePreview.resx">
       <DependentUpon>UC_ImagePreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProcessusModel\UC_ProcessusModel.resx">
+      <DependentUpon>UC_ProcessusModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProcessusSearch\UC_ProcessusSearch.resx">
+      <DependentUpon>UC_ProcessusSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Settings\UC_Settings.resx">
       <DependentUpon>UC_Settings.cs</DependentUpon>
