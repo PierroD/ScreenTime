@@ -39,11 +39,11 @@ namespace ScreenTime
             this.pbox_Settings = new FontAwesome.Sharp.IconPictureBox();
             this.pbox_Home = new FontAwesome.Sharp.IconPictureBox();
             this.pnl_top = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbl_categoryName = new Guna.UI.WinForms.GunaLabel();
+            this.pbox_categoryIcon = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btn_close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.drag_form = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnl_main = new Guna.UI2.WinForms.Guna2Panel();
-            this.pbox_categoryIcon = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.lbl_categoryName = new Guna.UI.WinForms.GunaLabel();
             this.pnl_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Settings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Home)).BeginInit();
@@ -167,6 +167,27 @@ namespace ScreenTime
             this.pnl_top.Size = new System.Drawing.Size(859, 45);
             this.pnl_top.TabIndex = 1;
             // 
+            // lbl_categoryName
+            // 
+            this.lbl_categoryName.AutoSize = true;
+            this.lbl_categoryName.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_categoryName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(128)))), ((int)(((byte)(249)))));
+            this.lbl_categoryName.Location = new System.Drawing.Point(59, 12);
+            this.lbl_categoryName.Name = "lbl_categoryName";
+            this.lbl_categoryName.Size = new System.Drawing.Size(0, 21);
+            this.lbl_categoryName.TabIndex = 2;
+            // 
+            // pbox_categoryIcon
+            // 
+            this.pbox_categoryIcon.Location = new System.Drawing.Point(6, 0);
+            this.pbox_categoryIcon.Name = "pbox_categoryIcon";
+            this.pbox_categoryIcon.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.pbox_categoryIcon.ShadowDecoration.Parent = this.pbox_categoryIcon;
+            this.pbox_categoryIcon.Size = new System.Drawing.Size(45, 45);
+            this.pbox_categoryIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbox_categoryIcon.TabIndex = 1;
+            this.pbox_categoryIcon.TabStop = false;
+            // 
             // btn_close
             // 
             this.btn_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -196,27 +217,6 @@ namespace ScreenTime
             this.pnl_main.Size = new System.Drawing.Size(859, 595);
             this.pnl_main.TabIndex = 3;
             // 
-            // pbox_categoryIcon
-            // 
-            this.pbox_categoryIcon.Location = new System.Drawing.Point(6, 0);
-            this.pbox_categoryIcon.Name = "pbox_categoryIcon";
-            this.pbox_categoryIcon.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.pbox_categoryIcon.ShadowDecoration.Parent = this.pbox_categoryIcon;
-            this.pbox_categoryIcon.Size = new System.Drawing.Size(45, 45);
-            this.pbox_categoryIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbox_categoryIcon.TabIndex = 1;
-            this.pbox_categoryIcon.TabStop = false;
-            // 
-            // lbl_categoryName
-            // 
-            this.lbl_categoryName.AutoSize = true;
-            this.lbl_categoryName.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_categoryName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(128)))), ((int)(((byte)(249)))));
-            this.lbl_categoryName.Location = new System.Drawing.Point(59, 12);
-            this.lbl_categoryName.Name = "lbl_categoryName";
-            this.lbl_categoryName.Size = new System.Drawing.Size(0, 21);
-            this.lbl_categoryName.TabIndex = 2;
-            // 
             // form_ScreenTime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +230,7 @@ namespace ScreenTime
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "form_ScreenTime";
             this.Text = "ScreenTime";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_ScreenTime_FormClosing);
             this.pnl_left.ResumeLayout(false);
             this.pnl_left.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Settings)).EndInit();

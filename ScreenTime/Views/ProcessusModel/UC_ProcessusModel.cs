@@ -27,18 +27,15 @@ namespace ScreenTime.Views.ProcessusModel
         private void UC_ProcessusModel_Load(object sender, EventArgs e)
         {
             lbl_processusName.Text = processus.Name;
-            try
-            {
-                pbox_processImage.Image = System.Drawing.Icon.ExtractAssociatedIcon(ProcessHelper.GetPathFromProcessId(Process.GetProcessesByName(processus.Name)[0])).ToBitmap();
-            }
-            catch (Exception ex)
-            { }
-            }
+            string ProcessPath = ProcessHelper.GetPathFromProcessusName(processus.Name);
+            if (ProcessPath != String.Empty)
+                pbox_processImage.Image = System.Drawing.Icon.ExtractAssociatedIcon(ProcessPath).ToBitmap();
 
-            private void pbox_delete_Click(object sender, EventArgs e)
-            {
-                ProcessusController.DeleteProcessus(categoryName, processus.Name);
-                this.Dispose();
-            }
+        }
+        private void pbox_delete_Click(object sender, EventArgs e)
+        {
+            ProcessusController.DeleteProcessus(categoryName, processus.Name);
+            this.Dispose();
         }
     }
+}

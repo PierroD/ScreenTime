@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CategoryController.cs" />
+    <Compile Include="Controller\OpenTimeController.cs" />
     <Compile Include="Controller\ProcessusController.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Model\Category.cs" />

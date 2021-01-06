@@ -9,6 +9,6 @@ namespace ScreenTimeBackend.Model
     public class OpenTime
     {
         public DateTime Day { get; set; }
-        public int TimeOpen { get; set; }
+        public TimeSpan TimeOpen { get; set; }
     }
 }

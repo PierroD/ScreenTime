@@ -75,5 +75,16 @@ namespace ScreenTimeBackend.Controller
             return null;
         }
 
+        public static void StepOpenTimeCategories()
+        {
+            foreach (Category category in categories)
+                if(category.Applications != null)
+                foreach (Processus processus in category.Applications)
+                    if (processus.OpenTimes != null)
+                        OpenTimeController.stepOpenTime(processus);
+
+            SaveCategories();
+        }
+
     }
 }

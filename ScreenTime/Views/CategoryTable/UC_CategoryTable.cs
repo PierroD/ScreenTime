@@ -1,4 +1,5 @@
-﻿using ScreenTime.Views.ProcessusModel;
+﻿using ScreenTime.Utils;
+using ScreenTime.Views.ProcessusModel;
 using ScreenTime.Views.ProcessusSearch;
 using ScreenTimeBackend.Controller;
 using System;
@@ -37,7 +38,10 @@ namespace ScreenTime.Views.CategoryTable
                     if (category.Applications.Count > i)
                         if (category.Applications[i] != null)
                             pnl_processus.Controls.Add(new UC_ProcessusModel(category.Applications[i], category.Name));
+
+                checkRunningApplication();
             }
+
         }
 
         private int maxProcessus;
@@ -72,6 +76,19 @@ namespace ScreenTime.Views.CategoryTable
                     }
                 }
             }
+        }
+
+        private List<string> allProcessus = new List<string>();
+        private void checkRunningApplication()
+        {
+            foreach (var category in CategoryController.GetCategories())
+                if (category.Applications != null)
+                    foreach (var processus in category.Applications)
+                        if (!allProcessus.Contains(processus.Name) && ProcessHelper.IsRunningProcessusByName(processus.Name))
+                        {
+                            OpenTimeController.addOpenTime(processus);
+                            allProcessus.Add(processus.Name);
+                        }
         }
     }
 }

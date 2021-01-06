@@ -19,7 +19,26 @@ namespace ScreenTime.Utils
             {
                 return sb.ToString();
             }
-            return string.Empty;
+            return String.Empty;
+        }
+
+        public static string GetPathFromProcessusName(string processusName)
+        {
+            try
+            {
+                return ProcessHelper.GetPathFromProcessId(Process.GetProcessesByName(processusName)[0]);
+            }
+            catch (Exception ex)
+            {
+                return String.Empty;
+            }
+        }
+
+        public static bool IsRunningProcessusByName(string processusName)
+        {
+            if (Process.GetProcessesByName(processusName).Length > 0)
+                return true;
+            return false;
         }
     }
 }

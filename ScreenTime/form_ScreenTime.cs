@@ -52,5 +52,10 @@ namespace ScreenTime
                 pnl_categories.Controls.Add(new UC_CategoryModel(category.Name));
 
         }
+
+        private void form_ScreenTime_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CategoryController.StepOpenTimeCategories();
+        }
     }
 }
