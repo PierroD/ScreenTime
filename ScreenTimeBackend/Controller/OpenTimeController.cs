@@ -28,7 +28,6 @@ namespace ScreenTimeBackend.Controller
             DateTime dateNow = DateTime.Now;
             if (processus.OpenTimes.Last().Day.Day < DateTime.Now.Day)
             {
-
                 DateTime midnight = new DateTime(dateNow.Year, dateNow.Month, processus.OpenTimes.Last().Day.Day + 1, 0, 0, 0);
                 TimeSpan timeSpent = midnight.Subtract(processus.OpenTimes.Last().Day);
                 processus.OpenTimes.Last().TimeOpen = timeSpent;

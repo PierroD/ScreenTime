@@ -43,19 +43,19 @@ namespace ScreenTime.Views.CategoryTable
             this.btn_searchProcessus = new FontAwesome.Sharp.IconPictureBox();
             this.tbox_seachProcessus = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.grid_Applications = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbl_since = new Guna.UI.WinForms.GunaLabel();
+            this.cbox_since = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.chart_Applications = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lbl_applicationRecord = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.ProcessusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UsageTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_searchProcessus)).BeginInit();
             this.guna2Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_Applications)).BeginInit();
             this.guna2Panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Applications)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_processusList
@@ -170,7 +170,7 @@ namespace ScreenTime.Views.CategoryTable
             this.guna2Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.guna2Panel2.BorderColor = System.Drawing.Color.Gray;
             this.guna2Panel2.BorderRadius = 25;
-            this.guna2Panel2.Controls.Add(this.guna2DataGridView1);
+            this.guna2Panel2.Controls.Add(this.grid_Applications);
             this.guna2Panel2.FillColor = System.Drawing.Color.White;
             this.guna2Panel2.Location = new System.Drawing.Point(394, 349);
             this.guna2Panel2.Name = "guna2Panel2";
@@ -178,18 +178,132 @@ namespace ScreenTime.Views.CategoryTable
             this.guna2Panel2.Size = new System.Drawing.Size(430, 217);
             this.guna2Panel2.TabIndex = 7;
             // 
+            // grid_Applications
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.grid_Applications.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.grid_Applications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grid_Applications.BackgroundColor = System.Drawing.Color.White;
+            this.grid_Applications.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grid_Applications.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.grid_Applications.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_Applications.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.grid_Applications.ColumnHeadersHeight = 21;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_Applications.DefaultCellStyle = dataGridViewCellStyle3;
+            this.grid_Applications.EnableHeadersVisualStyles = false;
+            this.grid_Applications.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.grid_Applications.Location = new System.Drawing.Point(13, 18);
+            this.grid_Applications.Name = "grid_Applications";
+            this.grid_Applications.RowHeadersVisible = false;
+            this.grid_Applications.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grid_Applications.Size = new System.Drawing.Size(405, 182);
+            this.grid_Applications.TabIndex = 0;
+            this.grid_Applications.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.grid_Applications.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.grid_Applications.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.grid_Applications.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.grid_Applications.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.grid_Applications.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.grid_Applications.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.grid_Applications.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.grid_Applications.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.grid_Applications.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.grid_Applications.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.grid_Applications.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.grid_Applications.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.grid_Applications.ThemeStyle.HeaderStyle.Height = 21;
+            this.grid_Applications.ThemeStyle.ReadOnly = false;
+            this.grid_Applications.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.grid_Applications.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.grid_Applications.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.grid_Applications.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.grid_Applications.ThemeStyle.RowsStyle.Height = 22;
+            this.grid_Applications.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.grid_Applications.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
             // guna2Panel3
             // 
             this.guna2Panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.guna2Panel3.BorderColor = System.Drawing.Color.Gray;
             this.guna2Panel3.BorderRadius = 25;
-            this.guna2Panel3.Controls.Add(this.chart1);
+            this.guna2Panel3.Controls.Add(this.lbl_since);
+            this.guna2Panel3.Controls.Add(this.cbox_since);
+            this.guna2Panel3.Controls.Add(this.chart_Applications);
             this.guna2Panel3.FillColor = System.Drawing.Color.White;
             this.guna2Panel3.Location = new System.Drawing.Point(394, 62);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.ShadowDecoration.Parent = this.guna2Panel3;
             this.guna2Panel3.Size = new System.Drawing.Size(430, 232);
             this.guna2Panel3.TabIndex = 8;
+            // 
+            // lbl_since
+            // 
+            this.lbl_since.AutoSize = true;
+            this.lbl_since.BackColor = System.Drawing.Color.White;
+            this.lbl_since.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_since.Location = new System.Drawing.Point(239, 10);
+            this.lbl_since.Name = "lbl_since";
+            this.lbl_since.Size = new System.Drawing.Size(54, 21);
+            this.lbl_since.TabIndex = 2;
+            this.lbl_since.Text = "Since :";
+            // 
+            // cbox_since
+            // 
+            this.cbox_since.BackColor = System.Drawing.Color.Transparent;
+            this.cbox_since.BorderRadius = 5;
+            this.cbox_since.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbox_since.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox_since.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbox_since.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbox_since.FocusedState.Parent = this.cbox_since;
+            this.cbox_since.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbox_since.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbox_since.HoverState.Parent = this.cbox_since;
+            this.cbox_since.ItemHeight = 30;
+            this.cbox_since.Items.AddRange(new object[] {
+            "Day",
+            "Week",
+            "Month"});
+            this.cbox_since.ItemsAppearance.Parent = this.cbox_since;
+            this.cbox_since.Location = new System.Drawing.Point(299, 3);
+            this.cbox_since.Name = "cbox_since";
+            this.cbox_since.ShadowDecoration.Parent = this.cbox_since;
+            this.cbox_since.Size = new System.Drawing.Size(103, 36);
+            this.cbox_since.StartIndex = 1;
+            this.cbox_since.TabIndex = 1;
+            this.cbox_since.SelectedIndexChanged += new System.EventHandler(this.cbox_since_SelectedIndexChanged);
+            // 
+            // chart_Applications
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart_Applications.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart_Applications.Legends.Add(legend1);
+            this.chart_Applications.Location = new System.Drawing.Point(26, 45);
+            this.chart_Applications.Name = "chart_Applications";
+            this.chart_Applications.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Hours";
+            series1.YValuesPerPoint = 4;
+            this.chart_Applications.Series.Add(series1);
+            this.chart_Applications.Size = new System.Drawing.Size(388, 184);
+            this.chart_Applications.TabIndex = 0;
             // 
             // lbl_applicationRecord
             // 
@@ -213,92 +327,6 @@ namespace ScreenTime.Views.CategoryTable
             this.label2.TabIndex = 10;
             this.label2.Text = "GRAPH";
             // 
-            // guna2DataGridView1
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.guna2DataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.guna2DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.guna2DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.guna2DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.guna2DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ProcessusName,
-            this.UsageTime});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.guna2DataGridView1.EnableHeadersVisualStyles = false;
-            this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(13, 18);
-            this.guna2DataGridView1.Name = "guna2DataGridView1";
-            this.guna2DataGridView1.RowHeadersVisible = false;
-            this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(405, 182);
-            this.guna2DataGridView1.TabIndex = 0;
-            this.guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.guna2DataGridView1.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 21;
-            this.guna2DataGridView1.ThemeStyle.ReadOnly = false;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 22;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // ProcessusName
-            // 
-            this.ProcessusName.HeaderText = "Processus Name";
-            this.ProcessusName.Name = "ProcessusName";
-            // 
-            // UsageTime
-            // 
-            this.UsageTime.HeaderText = "Usage Time";
-            this.UsageTime.Name = "UsageTime";
-            // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(26, 16);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(388, 201);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            // 
             // UC_CategoryTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,9 +344,10 @@ namespace ScreenTime.Views.CategoryTable
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_searchProcessus)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grid_Applications)).EndInit();
             this.guna2Panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.guna2Panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Applications)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,12 +363,12 @@ namespace ScreenTime.Views.CategoryTable
         private Guna.UI.WinForms.GunaLabel lbl_processusStatus;
         private System.Windows.Forms.Label lbl_add5More;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProcessusName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UsageTime;
+        private Guna.UI2.WinForms.Guna2DataGridView grid_Applications;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_Applications;
         private System.Windows.Forms.Label lbl_applicationRecord;
         private System.Windows.Forms.Label label2;
+        private Guna.UI.WinForms.GunaLabel lbl_since;
+        private Guna.UI2.WinForms.Guna2ComboBox cbox_since;
     }
 }

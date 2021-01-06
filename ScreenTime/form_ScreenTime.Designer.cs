@@ -44,6 +44,7 @@ namespace ScreenTime
             this.btn_close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.drag_form = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnl_main = new Guna.UI2.WinForms.Guna2Panel();
+            this.elipse_form = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnl_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Settings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Home)).BeginInit();
@@ -217,6 +218,11 @@ namespace ScreenTime
             this.pnl_main.Size = new System.Drawing.Size(859, 595);
             this.pnl_main.TabIndex = 3;
             // 
+            // elipse_form
+            // 
+            this.elipse_form.BorderRadius = 4;
+            this.elipse_form.TargetControl = this;
+            // 
             // form_ScreenTime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,6 +264,7 @@ namespace ScreenTime
         private Guna.UI2.WinForms.Guna2Panel pnl_main;
         private Guna.UI.WinForms.GunaLabel lbl_categoryName;
         private Guna.UI2.WinForms.Guna2CirclePictureBox pbox_categoryIcon;
+        private Guna.UI2.WinForms.Guna2Elipse elipse_form;
     }
 }
 

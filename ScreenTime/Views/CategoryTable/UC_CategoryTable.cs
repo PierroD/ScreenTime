@@ -1,4 +1,5 @@
-﻿using ScreenTime.Utils;
+﻿using ScreenTime.Models;
+using ScreenTime.Utils;
 using ScreenTime.Views.ProcessusModel;
 using ScreenTime.Views.ProcessusSearch;
 using ScreenTimeBackend.Controller;
@@ -23,7 +24,24 @@ namespace ScreenTime.Views.CategoryTable
             this.category = CategoryController.GetCategory(categoryName);
             InitializeComponent();
             LoadProcessus();
+            LoadChartAndTable();
         }
+
+
+        private int maxProcessus;
+        private void lbl_add5More_Click(object sender, EventArgs e)
+        {
+            for (int i = maxProcessus; i < maxProcessus + 5; i++)
+                if (category.Applications[i] != null)
+                    pnl_processus.Controls.Add(new UC_ProcessusModel(category.Applications[i], category.Name));
+            maxProcessus += 5;
+        }
+
+        private void cbox_since_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadChartAndTable();
+        }
+
 
         private void LoadProcessus()
         {
@@ -39,20 +57,9 @@ namespace ScreenTime.Views.CategoryTable
                         if (category.Applications[i] != null)
                             pnl_processus.Controls.Add(new UC_ProcessusModel(category.Applications[i], category.Name));
 
-                checkRunningApplication();
+                CheckRunningApplication();
             }
-
         }
-
-        private int maxProcessus;
-        private void lbl_add5More_Click(object sender, EventArgs e)
-        {
-            for (int i = maxProcessus; i < maxProcessus + 5; i++)
-                if (category.Applications[i] != null)
-                    pnl_processus.Controls.Add(new UC_ProcessusModel(category.Applications[i], category.Name));
-            maxProcessus += 5;
-        }
-
 
         private void SearchProcessus(object sender, EventArgs e)
         {
@@ -79,16 +86,65 @@ namespace ScreenTime.Views.CategoryTable
         }
 
         private List<string> allProcessus = new List<string>();
-        private void checkRunningApplication()
+        private void CheckRunningApplication()
         {
-            foreach (var category in CategoryController.GetCategories())
-                if (category.Applications != null)
-                    foreach (var processus in category.Applications)
-                        if (!allProcessus.Contains(processus.Name) && ProcessHelper.IsRunningProcessusByName(processus.Name))
-                        {
-                            OpenTimeController.addOpenTime(processus);
-                            allProcessus.Add(processus.Name);
-                        }
+            if (category.Applications != null)
+                foreach (var processus in category.Applications)
+                    if (!allProcessus.Contains(processus.Name) && ProcessHelper.IsRunningProcessusByName(processus.Name))
+                    {
+                        OpenTimeController.addOpenTime(processus);
+                        allProcessus.Add(processus.Name);
+                    }
         }
+
+        private void LoadChartAndTable()
+        {
+            List<Data> datas = GetDatas();
+            chart_Applications.DataSource = datas;
+            chart_Applications.Series["Hours"].XValueMember = "ProcessusName";
+            chart_Applications.Series["Hours"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            chart_Applications.Series["Hours"].YValueMembers = "TotalHours";
+            chart_Applications.Series["Hours"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            grid_Applications.DataSource = datas;
+        }
+
+        private List<Data> GetDatas()
+        {
+            List<Data> datas = new List<Data>();
+            DateTime since = GetSinceChoice();
+            if (category.Applications != null)
+                foreach (var processus in category.Applications)
+                {
+                    double totalHours = 0.0;
+                    if (processus.OpenTimes != null)
+                    {
+                        foreach (var OpenTime in processus.OpenTimes)
+                        {
+                            if (OpenTime.Day > since)
+                                totalHours += OpenTime.TimeOpen.TotalHours;
+                        }
+                    }
+                    datas.Add(new Data { ProcessusName = processus.Name, TotalHours = totalHours });
+                }
+            return datas;
+        }
+
+        private DateTime GetSinceChoice()
+        {
+            DateTime dateNow = DateTime.Now;
+            switch (cbox_since.SelectedIndex)
+            {
+                case 0:
+                    return new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 0, 0, 0).AddDays(-1);
+                case 1:
+                    return new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 0, 0, 0).AddDays(-7);
+                case 2:
+                    return new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 0, 0, 0).AddMonths(-1);
+                default:
+                    return new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 0, 0, 0).AddDays(-7);
+            }
+        }
+
+
     }
 }

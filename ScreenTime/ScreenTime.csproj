@@ -65,6 +65,7 @@
     <Compile Include="form_ScreenTime.Designer.cs">
       <DependentUpon>form_ScreenTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="form_createCategory.cs">
