@@ -9,25 +9,31 @@ namespace ScreenTimeBackend.Controller
 {
     public class ProcessusController
     {
-        public static void AddProcessus(string CategoryName, string ProcessName)
+        public static async void AddProcessus(string CategoryName, string ProcessName)
         {
-            var category = CategoryController.GetCategory(CategoryName);
-            Processus newProcessus = new Processus();
-            newProcessus.Name = ProcessName;
-            newProcessus.AddedAt = DateTime.Now;
-            if (category.Applications == null)
-                category.Applications = new List<Processus>();
-            category.Applications.Add(newProcessus);
-            CategoryController.SaveCategories();
+            await Task.Run(() =>
+            {
+                var category = CategoryController.GetCategoryAsync(CategoryName).Result;
+                Processus newProcessus = new Processus();
+                newProcessus.Name = ProcessName;
+                newProcessus.AddedAt = DateTime.Now;
+                if (category.Applications == null)
+                    category.Applications = new List<Processus>();
+                category.Applications.Add(newProcessus);
+                CategoryController.SaveCategoriesAsync();
+            });
         }
 
-        public static void DeleteProcessus(string CategoryName, string ProcessName)
+        public static async void DeleteProcessusAsync(string CategoryName, string ProcessName)
         {
-            var category = CategoryController.GetCategory(CategoryName);
-            foreach (Processus processus in category.Applications.ToList())
-                if (processus.Name.Equals(ProcessName))
-                    category.Applications.Remove(processus);
-            CategoryController.SaveCategories();
+            await Task.Run(() =>
+            {
+                var category = CategoryController.GetCategoryAsync(CategoryName).Result;
+                foreach (Processus processus in category.Applications.ToList())
+                    if (processus.Name.Equals(ProcessName))
+                        category.Applications.Remove(processus);
+                CategoryController.SaveCategoriesAsync();
+            });
         }
 
     }

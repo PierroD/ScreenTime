@@ -1,4 +1,4 @@
-﻿using ScreenTime.Views.CreateCategory;
+﻿using ScreenTime.Views.ImagePreview;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,7 +36,7 @@ namespace ScreenTime
             if (tbox_Name.TextLength != 0)
                 if (File.Exists(imagePreview.filepath))
                 {
-                    CategoryController.CreateCategory(tbox_Name.Text, tbox_Description.Text, imagePreview.filepath);
+                    CategoryController.CreateCategoryAsync(tbox_Name.Text, tbox_Description.Text, imagePreview.filepath);
                     this.Close();
                 }
                 else

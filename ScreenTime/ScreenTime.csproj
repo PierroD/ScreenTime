@@ -90,10 +90,10 @@
     <Compile Include="Views\CategoryTable\UC_CategoryTable.Designer.cs">
       <DependentUpon>UC_CategoryTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CreateCategory\UC_ImagePreview.cs">
+    <Compile Include="Views\ImagePreview\UC_ImagePreview.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\CreateCategory\UC_ImagePreview.Designer.cs">
+    <Compile Include="Views\ImagePreview\UC_ImagePreview.Designer.cs">
       <DependentUpon>UC_ImagePreview.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ProcessusModel\UC_ProcessusModel.cs">
@@ -135,7 +135,7 @@
     <EmbeddedResource Include="Views\CategoryTable\UC_CategoryTable.resx">
       <DependentUpon>UC_CategoryTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CreateCategory\UC_ImagePreview.resx">
+    <EmbeddedResource Include="Views\ImagePreview\UC_ImagePreview.resx">
       <DependentUpon>UC_ImagePreview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProcessusModel\UC_ProcessusModel.resx">

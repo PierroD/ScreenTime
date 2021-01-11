@@ -1,5 +1,5 @@
 ﻿
-namespace ScreenTime.Views.CreateCategory
+namespace ScreenTime.Views.ImagePreview
 {
     partial class UC_ImagePreview
     {

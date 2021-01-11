@@ -34,7 +34,7 @@ namespace ScreenTime.Views.ProcessusModel
         }
         private void pbox_delete_Click(object sender, EventArgs e)
         {
-            ProcessusController.DeleteProcessus(categoryName, processus.Name);
+            ProcessusController.DeleteProcessusAsync(categoryName, processus.Name);
             this.Dispose();
         }
     }

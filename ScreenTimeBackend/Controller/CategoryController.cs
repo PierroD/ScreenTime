@@ -15,35 +15,44 @@ namespace ScreenTimeBackend.Controller
         static List<Category> categories;
         static string categoryDirectoryPath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) }\\Categories";
         static string categoryImagesPath = $"{categoryDirectoryPath}\\Images";
-        public static void LoadCategories()
+        public static async Task<bool> LoadCategoriesAsync()
         {
-            categories = new List<Category>();
-            if (Directory.Exists(categoryDirectoryPath))
-                foreach (string categoryFile in Directory.GetFiles(categoryDirectoryPath))
-                    categories.Add(JsonConvert.DeserializeObject<Category>(File.ReadAllText(categoryFile)));
-            else
+            return await Task.Run(async () =>
             {
-                Directory.CreateDirectory(categoryDirectoryPath);
-                LoadCategories();
-            }
+                categories = new List<Category>();
+                if (Directory.Exists(categoryDirectoryPath))
+                    foreach (string categoryFile in Directory.GetFiles(categoryDirectoryPath))
+                        categories.Add(JsonConvert.DeserializeObject<Category>(File.ReadAllText(categoryFile)));
+                else
+                {
+                    Directory.CreateDirectory(categoryDirectoryPath);
+                    await LoadCategoriesAsync();
+                }
+                return true;
+            });
         }
-        public static void CreateCategory(string name, string description, string imagePath)
+
+        public static async void CreateCategoryAsync(string name, string description, string imagePath)
         {
-            Category newCategory = new Category();
-            newCategory.Name = name;
-            newCategory.Description = description;
-            if (!Directory.Exists(categoryImagesPath))
-                Directory.CreateDirectory(categoryImagesPath);
-            string newImagePath = $"{categoryImagesPath}\\{DateTime.Now.ToFileTime()}{Path.GetExtension(imagePath)}";
-            File.Copy(imagePath, newImagePath, true);
-            newCategory.Image = newImagePath;
-            categories.Add(newCategory);
-            SaveCategories();
+            await Task.Run(() =>
+            {
+                Category newCategory = new Category();
+                newCategory.Name = name;
+                newCategory.Description = description;
+                if (!Directory.Exists(categoryImagesPath))
+                    Directory.CreateDirectory(categoryImagesPath);
+                string newImagePath = $"{categoryImagesPath}\\{DateTime.Now.ToFileTime()}{Path.GetExtension(imagePath)}";
+                File.Copy(imagePath, newImagePath, true);
+                newCategory.Image = newImagePath;
+                categories.Add(newCategory);
+                SaveCategoriesAsync();
+            });
 
         }
 
-        public static void SaveCategories()
+        public static void SaveCategoriesAsync()
         {
+
             foreach (Category category in categories)
             {
                 string filePath = $"{categoryDirectoryPath}\\{category.Name}.json";
@@ -62,12 +71,21 @@ namespace ScreenTimeBackend.Controller
                     categories.Remove(category);
         }
 
+        public static Task<List<Category>> GetCategoriesAsync()
+        {
+            return Task.Run(() => GetCategories());
+        }
         public static List<Category> GetCategories()
         {
             return categories;
         }
 
-        public static Category GetCategory(string Name)
+        public static Task<Category> GetCategoryAsync(string Name)
+        {
+            return Task.Run(() => GetCategory(Name));
+        }
+
+        private static Category GetCategory(string Name)
         {
             foreach (Category category in categories)
                 if (category.Name.Equals(Name))
@@ -75,15 +93,18 @@ namespace ScreenTimeBackend.Controller
             return null;
         }
 
-        public static void StepOpenTimeCategories()
+        public static async void StepOpenTimeCategoriesAsync()
         {
-            foreach (Category category in categories)
-                if(category.Applications != null)
-                foreach (Processus processus in category.Applications)
-                    if (processus.OpenTimes != null)
-                        OpenTimeController.stepOpenTime(processus);
+            await Task.Run(() =>
+            {
+                foreach (Category category in categories)
+                    if (category.Applications != null)
+                        foreach (Processus processus in category.Applications)
+                            if (processus.OpenTimes != null)
+                                OpenTimeController.stepOpenTimeAsync(processus);
 
-            SaveCategories();
+                SaveCategoriesAsync();
+            });
         }
 
     }

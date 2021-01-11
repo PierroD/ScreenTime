@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ScreenTime.Views.CreateCategory
+namespace ScreenTime.Views.ImagePreview
 {
     public partial class UC_ImagePreview : UserControl
     {

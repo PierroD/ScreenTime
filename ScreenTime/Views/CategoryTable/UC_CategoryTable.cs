@@ -21,7 +21,7 @@ namespace ScreenTime.Views.CategoryTable
         dynamic category;
         public UC_CategoryTable(string categoryName)
         {
-            this.category = CategoryController.GetCategory(categoryName);
+            this.category = CategoryController.GetCategoryAsync(categoryName).Result;
             InitializeComponent();
             LoadProcessus();
             LoadChartAndTable();
@@ -92,7 +92,7 @@ namespace ScreenTime.Views.CategoryTable
                 foreach (var processus in category.Applications)
                     if (!allProcessus.Contains(processus.Name) && ProcessHelper.IsRunningProcessusByName(processus.Name))
                     {
-                        OpenTimeController.addOpenTime(processus);
+                        OpenTimeController.addOpenTimeAsync(processus);
                         allProcessus.Add(processus.Name);
                     }
         }

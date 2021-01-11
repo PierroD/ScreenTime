@@ -46,16 +46,27 @@ namespace ScreenTime
 
         private void LoadCategories()
         {
-            CategoryController.LoadCategories();
-            pnl_categories.Controls.Clear();
-            foreach (var category in CategoryController.GetCategories())
-                pnl_categories.Controls.Add(new UC_CategoryModel(category.Name));
-
+            LoadCategoriesAsync();
         }
+        private async void LoadCategoriesAsync()
+        {
+
+            try
+            {
+                await CategoryController.LoadCategoriesAsync();
+                pnl_categories.Controls.Clear();
+                if (CategoryController.GetCategoriesAsync().Result != null)
+                    foreach (var category in CategoryController.GetCategoriesAsync().Result)
+                        pnl_categories.Controls.Add(new UC_CategoryModel(category.Name));
+            }
+            catch { }
+        }
+
+
 
         private void form_ScreenTime_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CategoryController.StepOpenTimeCategories();
+            CategoryController.StepOpenTimeCategoriesAsync();
         }
     }
 }

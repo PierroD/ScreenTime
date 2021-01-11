@@ -19,7 +19,7 @@ namespace ScreenTime.Views.CategoryModel
         dynamic category;
         public UC_CategoryModel(string categoryName)
         {
-            this.category = CategoryController.GetCategory(categoryName);
+            this.category = CategoryController.GetCategoryAsync(categoryName).Result;
             InitializeComponent();
         }
 
